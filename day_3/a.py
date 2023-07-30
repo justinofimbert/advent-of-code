@@ -1,5 +1,12 @@
 class Santa:
     def __init__(self, location: tuple = (0, 0)) -> None:
+        
+        if len(location) != 2:
+            raise ValueError("tuple size must be equal to two.")
+        
+        if not isinstance(location[0], int) or not isinstance(location[1], int):
+            raise ValueError("values of location have to be integers.")
+        
         self.location = location
         self.path = [location]
 
