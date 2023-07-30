@@ -1,10 +1,5 @@
-from typing import Union
-
-Numeric = Union[int, str]
-
-
 class Santa:
-    def __init__(self, location: Numeric = (0, 0)) -> None:
+    def __init__(self, location: tuple = (0, 0)) -> None:
         self.location = location
         self.path = [location]
 
@@ -28,6 +23,10 @@ class Santa:
 
     def path(self) -> list:
         return self.path
+    
+class SantaArmy:
+    def __init__(self, ) -> None:
+        pass
 
 
 if __name__ == "__main__":
