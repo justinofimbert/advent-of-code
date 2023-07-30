@@ -30,10 +30,7 @@ class Santa:
 
     def path(self) -> list:
         return self.path
-    
-class SantaArmy:
-    def __init__(self, ) -> None:
-        pass
+
 
 
 if __name__ == "__main__":
