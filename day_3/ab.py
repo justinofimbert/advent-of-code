@@ -1,14 +1,13 @@
 class Santa:
     def __init__(self, location: tuple = (0, 0)) -> None:
-        
         if len(location) != 2:
             raise ValueError("tuple size must be equal to two.")
-        
+
         if not isinstance(location[0], int) or not isinstance(location[1], int):
             raise ValueError("values of location have to be integers.")
-        
+
         self.location = location
-        self.path = [location]
+        self.path: list = [location]
 
     def move(self, direction: str) -> None:
         if direction not in "^>v<":
@@ -32,15 +31,25 @@ class Santa:
         return self.path
 
 
-
 if __name__ == "__main__":
     with open("input.txt", "r") as file:
         directions = file.read()
 
     santa = Santa()
-    for direction in directions:
+    santas = [Santa(), Santa()]
+    for direction_number, direction in enumerate(directions):
         santa.move(direction)
 
-    houses_visited_by_santa = len(set(santa.path))
+        if direction_number % 2 == 0:
+            santas[0].move(direction)
 
-    print(f"houses visited by santa: {houses_visited_by_santa}")
+        else:
+            santas[1].move(direction)
+
+    houses_visited_by_santa = len(set(santa.path))
+    print(f"houses visited by Santa: {houses_visited_by_santa}")
+
+    houses_visited_by_two_santas = len(
+        set([house for santa in santas for house in santa.path])
+    )
+    print(f"houses visited by Santa and Robo-Santa: {houses_visited_by_two_santas}")
